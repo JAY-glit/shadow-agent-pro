@@ -7,7 +7,7 @@
 ![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue)
 ![Coverage](https://img.shields.io/badge/coverage-33%20tests-informational)
 
-Built by **Jay (Alladi Jaydurga)** and **Ranjith Kumar** — OM Sterling Global University.
+Built by **Jay (Alladi Jaydurga)** 
 
 ---
 
