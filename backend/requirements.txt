@@ -1,0 +1,29 @@
+# Pinned exact versions for packages that are pure-Python or have reliable
+# cross-version wheels. For compiled/scientific packages (scikit-learn,
+# numpy, pandas, shap) we use a minimum-version floor instead of an exact
+# pin, so pip can select whatever prebuilt wheel is available for your
+# Python version rather than failing over to a source build.
+#
+# Recommended: run this on Python 3.11 or 3.12 (see README troubleshooting
+# section) — very new Python releases often lack wheels for these packages
+# for several months after release.
+
+Flask==3.0.3
+Flask-CORS==4.0.1
+Flask-SQLAlchemy==3.1.1
+Flask-Limiter==3.8.0
+scikit-learn>=1.5.1
+numpy>=1.26.4
+pandas>=2.2.2
+joblib>=1.4.2
+python-whois==0.9.4
+tldextract==5.1.2
+beautifulsoup4==4.12.3
+requests==2.32.3
+python-dotenv==1.0.1
+shap>=0.46.0
+redis==5.0.8
+PyJWT==2.9.0
+flask-socketio==5.3.7
+python-socketio==5.11.4
+celery==5.4.0

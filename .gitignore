@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Flask / SQLite
+backend/instance/*.db
+backend/ml/artifacts/*.joblib
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Env
+.env
+.env.local
+
+# OS
+.DS_Store
+
+# Datasets (too large for git)
+ml-training/datasets/*.csv
+backend/data/datasets/*.csv
+
+
+# Chrome-generated runtime artifacts (created when the extension is loaded,
+# not part of the project source)
+extension/_metadata/

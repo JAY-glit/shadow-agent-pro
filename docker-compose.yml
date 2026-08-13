@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: shadow-agent-redis
+    ports:
+      - "6379:6379"
+
+  backend:
+    build: ./backend
+    container_name: shadow-agent-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/instance:/app/instance
+      - ./backend/ml/artifacts:/app/ml/artifacts
+    environment:
+      - SECRET_KEY=change-me-in-prod
+      - DATABASE_URL=sqlite:///instance/shadowagent.db
+      - REDIS_URL=redis://redis:6379/0
+      - VIRUSTOTAL_API_KEY=${VIRUSTOTAL_API_KEY:-}
+      - SAFE_BROWSING_API_KEY=${SAFE_BROWSING_API_KEY:-}
+    depends_on:
+      - redis
+
+  worker:
+    build: ./backend
+    container_name: shadow-agent-worker
+    command: celery -A celery_app.celery_app worker --loglevel=info
+    volumes:
+      - ./backend/instance:/app/instance
+      - ./backend/ml/artifacts:/app/ml/artifacts
+    environment:
+      - SECRET_KEY=change-me-in-prod
+      - DATABASE_URL=sqlite:///instance/shadowagent.db
+      - REDIS_URL=redis://redis:6379/0
+      - VIRUSTOTAL_API_KEY=${VIRUSTOTAL_API_KEY:-}
+      - SAFE_BROWSING_API_KEY=${SAFE_BROWSING_API_KEY:-}
+    depends_on:
+      - redis
+      - backend
+
+  dashboard:
+    build: ./dashboard
+    container_name: shadow-agent-dashboard
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_BASE=http://localhost:5000/api

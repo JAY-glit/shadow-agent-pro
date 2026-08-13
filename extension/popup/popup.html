@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Shadow Agent Pro</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="header">
+    <img src="../icons/icon48.png" alt="logo" />
+    <div>
+      <h1>Shadow Agent Pro</h1>
+      <span class="header__tag">Real-time protection</span>
+    </div>
+  </div>
+
+  <div id="status" class="status status--loading">
+    <span class="status__dot"></span>
+    <span id="status-text">Scanning current page…</span>
+  </div>
+
+  <div id="confidence-row" class="confidence-row" style="display:none;">
+    <div class="confidence-bar-track">
+      <div id="confidence-bar-fill" class="confidence-bar-fill"></div>
+    </div>
+    <span id="confidence-label"></span>
+  </div>
+
+  <div id="ensemble" class="ensemble" style="display:none;">
+    <div class="ensemble__row">
+      <span>Engineered features model</span>
+      <span class="ensemble__weight">65%</span>
+    </div>
+    <div class="ensemble__row">
+      <span>Character-pattern model</span>
+      <span id="char-ngram-score" class="ensemble__weight">35%</span>
+    </div>
+  </div>
+
+  <ul id="details" class="details"></ul>
+
+  <div class="footer">
+    <button id="report-btn" class="report-btn">Report false positive/negative</button>
+    <a id="dashboard-link" class="dashboard-link" href="http://localhost:5173" target="_blank">
+      Open Dashboard →
+    </a>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

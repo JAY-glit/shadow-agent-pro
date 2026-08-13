@@ -1,0 +1,18 @@
+{
+  "version": "20260812-044847",
+  "trained_at": "2026-08-12T04:48:47.489300+00:00",
+  "baseline_malicious_rate": 0.5,
+  "metrics": {
+    "roc_auc": 1.0,
+    "n_train": 16000,
+    "n_test": 4000
+  },
+  "best_params": {
+    "n_estimators": 100,
+    "min_samples_split": 5,
+    "min_samples_leaf": 2,
+    "max_features": "log2",
+    "max_depth": 40,
+    "class_weight": "balanced"
+  }
+}
