@@ -1,125 +1,144 @@
 <div align="center">
- ___ _  _   _   ___   _____      __    _   ___ ___ _  _ _____   ___ ___  ___
-/ __| || | /_\ |   \ / _ \ \    / /   /_\ / __| __| \| |_   _| | _ \ _ \/ _ \
-\__ \ __ |/ _ \| |) | (_) \ \/\/ /   / _ \ (_ | _|| .` | | |   |  _/   / (_) |
-|___/_||_/_/ \_\___/ \___/ \_/\_/   /_/ \_\___|___|_|\_| |_|   |_| |_|_\\___/
 
-real-time ML-powered malware & phishing detection chrome extension · flask api · react dashboard
-
-Show Image Show Image Show Image
-
-→ github.com/JAY-glit/shadow-agent-pro
-
-</div> <br>
-┌─ SESSION LOG ──────────────────────────────────────────────────────────────┐
-bash
-$ curl -X POST localhost:5000/api/scan/url -d '{"url":"http://paypa1-secure-login.tk/verify-account"}'
-json
-{
-  "verdict": "malicious",
-  "confidence": 0.7537,
-  "char_ngram_score": 0.3835,
-  "reasons": ["No valid SSL certificate"],
-  "latency_ms": 3597
-}
-bash
-$ curl -X POST localhost:5000/api/scan/url -d '{"url":"https://www.google.com"}'
-json
-{
-  "verdict": "safe",
-  "confidence": 0.02,
-  "reasons": ["google.com is a recognized, well-known legitimate domain"]
-}
-└──────────────────────────────────────────────────────────────────────────┘
-
-Two live scans, two verdicts, both correct — one caught by engineered features spotting a missing SSL cert, one trusted instantly via an allowlist instead of getting fooled by ML text patterns. That divergence is the whole design philosophy of this project: don't trust one signal.
+<img src="https://raw.githubusercontent.com/JAY-glit/JAY-glit/main/transit-map.svg" width="100%">
 
 <br>
-SYSTEM MAP
-Background (Celery)
-Flask API
-Client
-Browser
-POST scan/url
-POST scan/url
-queues
-threat_updated event
-WebSocket push
-cache
-sync blocklist every 5 min
-Chrome ExtensionMV3 service worker
-React DashboardVite + Socket.IO
-/api/scan/urlfast heuristic verdict
-Random Forest25+ engineered features
-Char n-gram modelindependent secondopinion
-JWT auth
-deep_scan_task
-WHOIS domain age
-SSL cert check
-VirusTotal
-Safe Browsing
-SQLitethreats, scan_logs
-Rediscache + broker + socketqueue
 
-> the fast path never touches the network beyond the request itself. everything slow happens in the background and pushes back live.
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=18&duration=2500&pause=1000&color=E8440A&center=true&vCenter=true&width=650&lines=Final-Year+AI+Engineer;LLM+Pipelines+%C2%B7+Threat+Detection+%C2%B7+Azure+AI;Shipping+Production-Ready+ML" />
 
 <br>
-INCIDENT LOG
 
-Two real bugs, found through real testing, documented instead of hidden.
+<img src="https://komarev.com/ghpvc/?username=JAY-glit&label=PROFILE+VIEWS&color=E8440A&style=flat-square" />
+<img src="https://img.shields.io/github/followers/JAY-glit?label=FOLLOWERS&style=flat-square&color=E8440A&labelColor=0B0E17" />
 
-┌─ INCIDENT #001 ────────────────────────────────────────────────────────────
-│ SEVERITY: model bias
-│ STATUS:   resolved
-├─────────────────────────────────────────────────────────────────────────
-│ https://www.google.com scored 93% malicious on the character n-gram
-│ model. Root cause: in the training sample, malicious URLs containing
-│ "goog" (brand-impersonation attempts) outnumbered legitimate Google
-│ URLs 2:1 — attackers impersonate popular brands so heavily that a
-│ naive text model learns to distrust the brand names themselves.
-│
-│ FIX: exact-match allowlist (utils/allowlist.py), verified with
-│ regression tests to confirm it can't be defeated by a phishing domain
-│ merely *containing* a brand name.
-└─────────────────────────────────────────────────────────────────────────
-┌─ INCIDENT #002 ────────────────────────────────────────────────────────────
-│ SEVERITY: suspiciously good result
-│ STATUS:   investigated, explained
-├─────────────────────────────────────────────────────────────────────────
-│ A training run on live URLhaus + Tranco data hit 100.00% accuracy.
-│ Real classifiers don't do that — so it was investigated, not reported
-│ blindly. Root cause: URLhaus's malicious set is mostly raw IP-address
-│ malware links; Tranco's benign set is exclusively clean top-domain
-│ names. Lexically almost trivially separable.
-│
-│ VALIDATION: stress-tested against a harder, hand-built typosquat with
-│ no IP address. Result — RF: 95.3% malicious, char-ngram: 38.4%
-│ malicious, ensemble: 75.4% malicious, correct. The two models
-│ disagreed for a real reason, and the stronger signal won.
-└─────────────────────────────────────────────────────────────────────────
+</div>
+
 <br>
-MODULES
-detection/
-├── random_forest ──── 25+ lexical, domain, SSL features · RandomizedSearchCV-tuned
-├── char_ngram ──────── TF-IDF + LogisticRegression, raw text, no manual features
-├── shap ────────────── per-prediction explainability, 2s hard timeout
-├── typosquat ───────── Levenshtein distance vs. curated brand list
-└── allowlist ───────── exact-match, un-defeatable by substring tricks
 
-realtime/
-├── async_scan ──────── heuristic verdict <1s → background deep-scan → push
-├── websocket ───────── live threat feed, metrics, activity ticker
-├── blocklist_sync ──── extension pulls confirmed-malicious domains every 5m
-└── command_palette ─── ⌘K to navigate or scan without touching the mouse
+## About
 
-ops/
-├── status ──────────── one endpoint, every subsystem's health
-├── metrics ─────────── live req/min, p50/p95 latency, scan volume
-├── drift ───────────── current malicious-rate vs. training baseline
-└── tests ───────────── 48 passing, zero network dependency, real CI
-<br> <div align="center">
-$ git clone https://github.com/JAY-glit/shadow-agent-pro.git
+Final-year AI engineer building systems that go from raw signal to production
+decision — threat detection models, LLM deployment pipelines, and
+infrastructure that holds up outside a demo environment.
 
-→ full repo, docs, and code
+Trained inside **Infosys** on **Microsoft Azure AI Foundry**, shipping LLM
+pipelines end-to-end. Closing out a B.Tech in Computer Science (Artificial
+Intelligence) at Om Sterling Global University, Hisar, under Dr. Dinesh
+(HOD: Dr. Parveen Seghal), CGPA 7.27.
+
+```yaml
+location:    Andhra Pradesh, IN
+focus:       AI/ML Engineering, Generative AI
+open_to:     Full-time roles
+education:   B.Tech CS (AI), Final Year — Om Sterling Global University
+training:    AI Trainee, Infosys × ICT Academy — Azure AI Foundry
+```
+
+<br>
+
+## Experience
+
+**AI Trainee — Infosys × ICT Academy**
+Hands-on training in Microsoft Azure AI Foundry and end-to-end LLM
+deployment pipelines. Focus on applied cloud AI infrastructure and
+production-scale model deployment workflows.
+
+<br>
+
+## Projects
+
+### Shadow Agent Pro
+*Real-time browser threat detection system — B.Tech capstone*
+
+A three-tier system for detecting malicious URLs in real time, evolved from
+an initial Chrome MV3 + Flask + React build into a full production-quality
+platform:
+
+- **Two-model ML ensemble** — Random Forest classifier (27 URL features) +
+  character n-gram TF-IDF with Logistic Regression, ~90% detection accuracy
+- **SHAP explainability** with hard timeouts, so every flagged URL comes
+  with a reason, not just a score
+- **JWT authentication**, Redis caching with in-memory fallback
+- **Async Celery deep-scan pipeline** for heavier analysis without blocking
+  the main request path
+- **Typosquatting detection** and **geo-IP threat mapping**
+- **Model drift monitoring** to catch when the classifier's accuracy
+  degrades over time
+- **WebSocket live push** for real-time dashboard updates
+- **48 passing pytest tests** with GitHub Actions CI, plus a bootstrap
+  script for one-command setup
+- Chrome MV3 extension (persistent service worker) · Flask REST API ·
+  React/Vite dashboard
+
+Built and tested end-to-end on Windows PowerShell with Python 3.14,
+co-developed with **Ranjith Kumar**.
+
+`Python` `Scikit-learn` `Flask` `Celery` `Redis` `React` `Chrome MV3` `Docker`
+
+<br>
+
+### AI Career GPS
+*Skill-gap intelligence platform for Tier-2/3 engineering students*
+
+An MVP web app that analyzes a student's current skill profile against
+target roles, surfaces the gap, and auto-generates a portfolio to help
+close it.
+
+`Next.js 14` `Supabase` `Gemini API`
+
+<br>
+
+### NLP Document Clustering
+*Embedding-based clustering and similarity mapping*
+
+A pipeline for clustering documents by semantic similarity using sentence
+embeddings, density-based clustering, and dimensionality reduction for
+visualization.
+
+`Sentence Transformers` `DBSCAN` `t-SNE`
+
+<br>
+
+## Stack
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=python,pytorch,sklearn,flask,fastapi,react,azure,neo4j,docker,git,vscode,linux&theme=dark" />
+
+</div>
+
+<br>
+
+## GitHub Activity
+
+<div align="center">
+
+<img src="https://github-readme-stats.vercel.app/api?username=JAY-glit&show_icons=true&theme=dark&bg_color=0B0E17&title_color=E8440A&icon_color=E8440A&text_color=E6E9F0&hide_border=true&border_radius=8" width="48%" />
+<img src="https://streak-stats.demolab.com?user=JAY-glit&theme=dark&background=0B0E17&border=E8440A&ring=E8440A&fire=E8440A&currStreakLabel=E8440A&sideLabels=E6E9F0&currStreakNum=E6E9F0&sideNums=E6E9F0&dates=E6E9F0&hide_border=true" width="48%" />
+
+<br><br>
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=JAY-glit&layout=compact&theme=dark&bg_color=0B0E17&title_color=E8440A&text_color=E6E9F0&hide_border=true&border_radius=8" width="48%" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=JAY-glit&theme=react-dark&bg_color=0B0E17&color=E8440A&line=E8440A&point=E6E9F0&area=true&hide_border=true" width="48%" />
+
+<br><br>
+
+<img src="https://github-profile-trophy.vercel.app/?username=JAY-glit&theme=darkhub&no-frame=true&column=4&margin-w=8&margin-h=8" />
+
+<br><br>
+
+<img src="https://raw.githubusercontent.com/JAY-glit/JAY-glit/output/github-contribution-grid-snake-dark.svg" width="100%">
+
+</div>
+
+<br>
+
+## Connect
+
+<div align="center">
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0B0E17?style=for-the-badge&logo=linkedin&logoColor=E8440A)](https://www.linkedin.com/in/jaydurga/)
+[![Gmail](https://img.shields.io/badge/Gmail-0B0E17?style=for-the-badge&logo=gmail&logoColor=E8440A)](mailto:jaydurga1290@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-0B0E17?style=for-the-badge&logo=github&logoColor=E8440A)](https://github.com/JAY-glit)
 
 </div>
