@@ -1,144 +1,174 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/JAY-glit/JAY-glit/main/transit-map.svg" width="100%">
+# 🛡️ Shadow Agent Pro
 
-<br>
+**Real-time malicious URL detection system — Chrome extension + ML backend + live dashboard**
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=18&duration=2500&pause=1000&color=E8440A&center=true&vCenter=true&width=650&lines=Final-Year+AI+Engineer;LLM+Pipelines+%C2%B7+Threat+Detection+%C2%B7+Azure+AI;Shipping+Production-Ready+ML" />
-
-<br>
-
-<img src="https://komarev.com/ghpvc/?username=JAY-glit&label=PROFILE+VIEWS&color=E8440A&style=flat-square" />
-<img src="https://img.shields.io/github/followers/JAY-glit?label=FOLLOWERS&style=flat-square&color=E8440A&labelColor=0B0E17" />
+![Python](https://img.shields.io/badge/Python-3.14-3776AB?style=flat-square&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-REST_API-000000?style=flat-square&logo=flask&logoColor=white)
+![React](https://img.shields.io/badge/React-Dashboard-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Chrome MV3](https://img.shields.io/badge/Chrome-MV3_Extension-4285F4?style=flat-square&logo=googlechrome&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-48_passing-brightgreen?style=flat-square)
+![CI](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-lightgrey?style=flat-square)
 
 </div>
 
 <br>
 
-## About
+## Overview
 
-Final-year AI engineer building systems that go from raw signal to production
-decision — threat detection models, LLM deployment pipelines, and
-infrastructure that holds up outside a demo environment.
+Shadow Agent Pro is a three-tier system that intercepts and classifies
+malicious URLs in real time. It started as a Chrome MV3 extension + Flask
+backend + React dashboard built under deadline pressure, and evolved into a
+production-quality threat detection platform with a two-model ML ensemble,
+explainable predictions, async deep scanning, and live monitoring.
 
-Trained inside **Infosys** on **Microsoft Azure AI Foundry**, shipping LLM
-pipelines end-to-end. Closing out a B.Tech in Computer Science (Artificial
-Intelligence) at Om Sterling Global University, Hisar, under Dr. Dinesh
-(HOD: Dr. Parveen Seghal), CGPA 7.27.
+Built as a B.Tech Computer Science (AI) capstone project by **Jay Durga**
+(enrollment 221020110013) and **Ranjith Kumar** (enrollment 221020110030).
 
-```yaml
-location:    Andhra Pradesh, IN
-focus:       AI/ML Engineering, Generative AI
-open_to:     Full-time roles
-education:   B.Tech CS (AI), Final Year — Om Sterling Global University
-training:    AI Trainee, Infosys × ICT Academy — Azure AI Foundry
+<br>
+
+## Architecture
+
+```
+┌─────────────────────┐      ┌──────────────────────┐      ┌─────────────────────┐
+│   Chrome Extension   │─────▶│      Flask API        │─────▶│   React Dashboard    │
+│   (Manifest V3)      │      │   (ML inference +      │◀─────│   (Vite, live view)  │
+│   Persistent worker  │◀─────│    business logic)     │      │   WebSocket client   │
+└─────────────────────┘      └──────────────────────┘      └─────────────────────┘
+                                        │
+                        ┌───────────────┼────────────────┐
+                        ▼               ▼                ▼
+                 ┌────────────┐  ┌────────────┐   ┌──────────────┐
+                 │   Redis     │  │   Celery    │   │  Model Drift  │
+                 │  (cache +   │  │ (async deep │   │   Monitor     │
+                 │  fallback)  │  │    scan)    │   │               │
+                 └────────────┘  └────────────┘   └──────────────┘
 ```
 
 <br>
 
-## Experience
+## Features
 
-**AI Trainee — Infosys × ICT Academy**
-Hands-on training in Microsoft Azure AI Foundry and end-to-end LLM
-deployment pipelines. Focus on applied cloud AI infrastructure and
-production-scale model deployment workflows.
+### Detection Engine
+- **Two-model ensemble**
+  - Random Forest classifier trained on 27 handcrafted URL features
+  - Character n-gram TF-IDF + Logistic Regression for lexical pattern detection
+  - Combined ensemble decision, ~90% detection accuracy
+- **SHAP explainability** — every flagged URL returns the specific features
+  that drove the decision, with hard timeouts so explanation generation
+  never blocks the response
+- **Typosquatting detection** — flags domains designed to impersonate
+  legitimate sites
+- **Geo-IP threat mapping** — visualizes where flagged traffic originates
+- **Model drift monitoring** — tracks classifier accuracy over time and
+  surfaces degradation before it becomes a problem
 
-<br>
+### Backend
+- JWT authentication
+- Redis caching with automatic in-memory fallback if Redis is unavailable
+- Async deep-scan pipeline via Celery for expensive analysis that
+  shouldn't block the main request path
+- WebSocket live push so the dashboard reflects new detections instantly
+- Bootstrap script for one-command environment setup
 
-## Projects
+### Extension
+- Chrome Manifest V3, persistent service worker
+- Live URL interception at the browser level
 
-### Shadow Agent Pro
-*Real-time browser threat detection system — B.Tech capstone*
+### Dashboard
+- React + Vite
+- Real-time threat feed via WebSocket
+- Geo-IP threat map view
 
-A three-tier system for detecting malicious URLs in real time, evolved from
-an initial Chrome MV3 + Flask + React build into a full production-quality
-platform:
-
-- **Two-model ML ensemble** — Random Forest classifier (27 URL features) +
-  character n-gram TF-IDF with Logistic Regression, ~90% detection accuracy
-- **SHAP explainability** with hard timeouts, so every flagged URL comes
-  with a reason, not just a score
-- **JWT authentication**, Redis caching with in-memory fallback
-- **Async Celery deep-scan pipeline** for heavier analysis without blocking
-  the main request path
-- **Typosquatting detection** and **geo-IP threat mapping**
-- **Model drift monitoring** to catch when the classifier's accuracy
-  degrades over time
-- **WebSocket live push** for real-time dashboard updates
-- **48 passing pytest tests** with GitHub Actions CI, plus a bootstrap
-  script for one-command setup
-- Chrome MV3 extension (persistent service worker) · Flask REST API ·
-  React/Vite dashboard
-
-Built and tested end-to-end on Windows PowerShell with Python 3.14,
-co-developed with **Ranjith Kumar**.
-
-`Python` `Scikit-learn` `Flask` `Celery` `Redis` `React` `Chrome MV3` `Docker`
-
-<br>
-
-### AI Career GPS
-*Skill-gap intelligence platform for Tier-2/3 engineering students*
-
-An MVP web app that analyzes a student's current skill profile against
-target roles, surfaces the gap, and auto-generates a portfolio to help
-close it.
-
-`Next.js 14` `Supabase` `Gemini API`
+### Quality
+- 48 passing pytest tests
+- GitHub Actions CI on every push
+- Verified through live testing on Windows PowerShell with Python 3.14
 
 <br>
 
-### NLP Document Clustering
-*Embedding-based clustering and similarity mapping*
+## Tech Stack
 
-A pipeline for clustering documents by semantic similarity using sentence
-embeddings, density-based clustering, and dimensionality reduction for
-visualization.
-
-`Sentence Transformers` `DBSCAN` `t-SNE`
-
-<br>
-
-## Stack
-
-<div align="center">
-
-<img src="https://skillicons.dev/icons?i=python,pytorch,sklearn,flask,fastapi,react,azure,neo4j,docker,git,vscode,linux&theme=dark" />
-
-</div>
+| Layer | Technology |
+|---|---|
+| Extension | Chrome Manifest V3, Service Workers |
+| Backend API | Flask, JWT |
+| ML | Scikit-learn (Random Forest), TF-IDF + Logistic Regression, SHAP |
+| Async processing | Celery |
+| Caching | Redis (with in-memory fallback) |
+| Real-time | WebSocket |
+| Frontend | React, Vite |
+| Testing / CI | pytest, GitHub Actions |
+| Containerization | Docker |
 
 <br>
 
-## GitHub Activity
+## Getting Started
 
-<div align="center">
+```bash
+# Clone the repository
+git clone https://github.com/JAY-glit/shadow-agent-pro.git
+cd shadow-agent-pro
 
-<img src="https://github-readme-stats.vercel.app/api?username=JAY-glit&show_icons=true&theme=dark&bg_color=0B0E17&title_color=E8440A&icon_color=E8440A&text_color=E6E9F0&hide_border=true&border_radius=8" width="48%" />
-<img src="https://streak-stats.demolab.com?user=JAY-glit&theme=dark&background=0B0E17&border=E8440A&ring=E8440A&fire=E8440A&currStreakLabel=E8440A&sideLabels=E6E9F0&currStreakNum=E6E9F0&sideNums=E6E9F0&dates=E6E9F0&hide_border=true" width="48%" />
+# Run the bootstrap script — sets up backend, dependencies, and env
+./bootstrap.sh        # or bootstrap.ps1 on Windows
 
-<br><br>
+# Start the backend
+cd backend
+python app.py
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=JAY-glit&layout=compact&theme=dark&bg_color=0B0E17&title_color=E8440A&text_color=E6E9F0&hide_border=true&border_radius=8" width="48%" />
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=JAY-glit&theme=react-dark&bg_color=0B0E17&color=E8440A&line=E8440A&point=E6E9F0&area=true&hide_border=true" width="48%" />
+# Start the dashboard
+cd ../dashboard
+npm install
+npm run dev
 
-<br><br>
-
-<img src="https://github-profile-trophy.vercel.app/?username=JAY-glit&theme=darkhub&no-frame=true&column=4&margin-w=8&margin-h=8" />
-
-<br><br>
-
-<img src="https://raw.githubusercontent.com/JAY-glit/JAY-glit/output/github-contribution-grid-snake-dark.svg" width="100%">
-
-</div>
+# Load the extension
+# Go to chrome://extensions → Enable Developer Mode → Load Unpacked → select /extension
+```
 
 <br>
 
-## Connect
+## Testing
 
-<div align="center">
+```bash
+cd backend
+pytest
+```
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0B0E17?style=for-the-badge&logo=linkedin&logoColor=E8440A)](https://www.linkedin.com/in/jaydurga/)
-[![Gmail](https://img.shields.io/badge/Gmail-0B0E17?style=for-the-badge&logo=gmail&logoColor=E8440A)](mailto:jaydurga1290@gmail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-0B0E17?style=for-the-badge&logo=github&logoColor=E8440A)](https://github.com/JAY-glit)
+48 tests covering the ML pipeline, API endpoints, caching fallback
+behavior, and authentication. CI runs automatically via GitHub Actions on
+every push.
 
-</div>
+<br>
+
+## Project Structure
+
+```
+shadow-agent-pro/
+├── extension/          # Chrome MV3 extension
+├── backend/             # Flask API, ML models, Celery tasks
+│   ├── models/           # Trained classifiers
+│   ├── tests/             # pytest suite (48 tests)
+│   └── app.py
+├── dashboard/            # React + Vite frontend
+├── bootstrap.sh          # One-command setup
+└── .github/workflows/    # CI pipeline
+```
+
+<br>
+
+## Team
+
+- **Jay Durga** — [GitHub](https://github.com/JAY-glit) · [LinkedIn](https://www.linkedin.com/in/jaydurga/)
+- **Ranjith Kumar** — Co-developer
+
+Supervised by Dr. Dinesh, Om Sterling Global University, Hisar
+(HOD: Dr. Parveen Seghal).
+
+<br>
+
+## License
+
+MIT
