@@ -1,0 +1,73 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow-E8440A" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#E8440A"/></marker>
+  <marker id="arrow-3B82F6" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#3B82F6"/></marker>
+  <marker id="arrow-22C55E" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#22C55E"/></marker>
+  <marker id="arrow-9AA3B8" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#9AA3B8"/></marker>
+</defs>
+<rect width="1200" height="520" fill="#0B0E17"/>
+<g stroke="#E8440A" stroke-opacity="0.04">
+<line x1="0" y1="0" x2="0" y2="520"/><line x1="50" y1="0" x2="50" y2="520"/><line x1="100" y1="0" x2="100" y2="520"/><line x1="150" y1="0" x2="150" y2="520"/><line x1="200" y1="0" x2="200" y2="520"/><line x1="250" y1="0" x2="250" y2="520"/><line x1="300" y1="0" x2="300" y2="520"/><line x1="350" y1="0" x2="350" y2="520"/><line x1="400" y1="0" x2="400" y2="520"/><line x1="450" y1="0" x2="450" y2="520"/><line x1="500" y1="0" x2="500" y2="520"/><line x1="550" y1="0" x2="550" y2="520"/><line x1="600" y1="0" x2="600" y2="520"/><line x1="650" y1="0" x2="650" y2="520"/><line x1="700" y1="0" x2="700" y2="520"/><line x1="750" y1="0" x2="750" y2="520"/><line x1="800" y1="0" x2="800" y2="520"/><line x1="850" y1="0" x2="850" y2="520"/><line x1="900" y1="0" x2="900" y2="520"/><line x1="950" y1="0" x2="950" y2="520"/><line x1="1000" y1="0" x2="1000" y2="520"/><line x1="1050" y1="0" x2="1050" y2="520"/><line x1="1100" y1="0" x2="1100" y2="520"/><line x1="1150" y1="0" x2="1150" y2="520"/>
+<line x1="0" y1="0" x2="1200" y2="0"/><line x1="0" y1="50" x2="1200" y2="50"/><line x1="0" y1="100" x2="1200" y2="100"/><line x1="0" y1="150" x2="1200" y2="150"/><line x1="0" y1="200" x2="1200" y2="200"/><line x1="0" y1="250" x2="1200" y2="250"/><line x1="0" y1="300" x2="1200" y2="300"/><line x1="0" y1="350" x2="1200" y2="350"/><line x1="0" y1="400" x2="1200" y2="400"/><line x1="0" y1="450" x2="1200" y2="450"/><line x1="0" y1="500" x2="1200" y2="500"/>
+</g>
+
+<text x="30" y="36" font-family="JetBrains Mono, monospace" font-size="18" font-weight="700" fill="#F5F1E8">SYSTEM ARCHITECTURE</text>
+
+
+    <rect x="40" y="70" width="230" height="90" rx="10" fill="#12161F" stroke="#E8440A" stroke-width="2"/>
+    <text x="155.0" y="111.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#F5F1E8">CHROME EXTENSION</text>
+    <text x="155.0" y="131.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#9AA3B8">Manifest V3 · Service Worker</text>
+
+    <rect x="485" y="70" width="230" height="90" rx="10" fill="#12161F" stroke="#E8440A" stroke-width="2"/>
+    <text x="600.0" y="111.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#F5F1E8">FLASK API</text>
+    <text x="600.0" y="131.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#9AA3B8">ML Inference · Auth · Routing</text>
+
+    <rect x="930" y="70" width="230" height="90" rx="10" fill="#12161F" stroke="#E8440A" stroke-width="2"/>
+    <text x="1045.0" y="111.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#F5F1E8">REACT DASHBOARD</text>
+    <text x="1045.0" y="131.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#9AA3B8">Vite · WebSocket Client</text>
+
+<line x1="270" y1="100" x2="485" y2="100" stroke="#E8440A" stroke-width="2" marker-end="url(#arrow-E8440A)"/><text x="377" y="90" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#E8440A">URL check</text>
+<line x1="485" y1="130" x2="270" y2="130" stroke="#E8440A" stroke-width="2" marker-end="url(#arrow-E8440A)"/><text x="377" y="150" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#E8440A">verdict</text>
+<line x1="715" y1="100" x2="930" y2="100" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrow-3B82F6)"/><text x="822" y="90" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#3B82F6">live push</text>
+<line x1="930" y1="130" x2="715" y2="130" stroke="#9AA3B8" stroke-width="2" marker-end="url(#arrow-9AA3B8)"/><text x="822" y="150" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#9AA3B8">query</text>
+
+
+    <rect x="300" y="260" width="210" height="90" rx="10" fill="#12161F" stroke="#3B82F6" stroke-width="2"/>
+    <text x="405.0" y="301.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#F5F1E8">RANDOM FOREST</text>
+    <text x="405.0" y="321.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#9AA3B8">27 URL features</text>
+
+    <rect x="535" y="260" width="210" height="90" rx="10" fill="#12161F" stroke="#3B82F6" stroke-width="2"/>
+    <text x="640.0" y="301.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#F5F1E8">TF-IDF + LOGREG</text>
+    <text x="640.0" y="321.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#9AA3B8">char n-gram model</text>
+
+    <rect x="770" y="260" width="210" height="90" rx="10" fill="#12161F" stroke="#22C55E" stroke-width="2"/>
+    <text x="875.0" y="301.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#F5F1E8">SHAP EXPLAINER</text>
+    <text x="875.0" y="321.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#9AA3B8">hard timeout guard</text>
+
+<line x1="600" y1="160" x2="405" y2="260" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrow-3B82F6)"/>
+<line x1="600" y1="160" x2="640" y2="260" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrow-3B82F6)"/>
+<line x1="600" y1="160" x2="875" y2="260" stroke="#22C55E" stroke-width="2" marker-end="url(#arrow-22C55E)"/>
+
+
+    <rect x="40" y="400" width="220" height="90" rx="10" fill="#12161F" stroke="#3B82F6" stroke-width="2"/>
+    <text x="150.0" y="441.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#F5F1E8">REDIS</text>
+    <text x="150.0" y="461.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#9AA3B8">cache + in-mem fallback</text>
+
+    <rect x="300" y="400" width="220" height="90" rx="10" fill="#12161F" stroke="#3B82F6" stroke-width="2"/>
+    <text x="410.0" y="441.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#F5F1E8">CELERY</text>
+    <text x="410.0" y="461.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#9AA3B8">async deep-scan queue</text>
+
+    <rect x="560" y="400" width="220" height="90" rx="10" fill="#12161F" stroke="#22C55E" stroke-width="2"/>
+    <text x="670.0" y="441.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#F5F1E8">MODEL DRIFT MONITOR</text>
+    <text x="670.0" y="461.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#9AA3B8">accuracy tracking</text>
+
+    <rect x="820" y="400" width="220" height="90" rx="10" fill="#12161F" stroke="#22C55E" stroke-width="2"/>
+    <text x="930.0" y="441.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#F5F1E8">GEO-IP THREAT MAP</text>
+    <text x="930.0" y="461.0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#9AA3B8">origin visualization</text>
+
+<line x1="600" y1="160" x2="150" y2="400" stroke="#9AA3B8" stroke-width="2" marker-end="url(#arrow-9AA3B8)" stroke-dasharray="6,4"/>
+<line x1="600" y1="160" x2="410" y2="400" stroke="#9AA3B8" stroke-width="2" marker-end="url(#arrow-9AA3B8)" stroke-dasharray="6,4"/>
+<line x1="600" y1="160" x2="670" y2="400" stroke="#9AA3B8" stroke-width="2" marker-end="url(#arrow-9AA3B8)" stroke-dasharray="6,4"/>
+<line x1="600" y1="160" x2="930" y2="400" stroke="#9AA3B8" stroke-width="2" marker-end="url(#arrow-9AA3B8)" stroke-dasharray="6,4"/>
+
+</svg>
