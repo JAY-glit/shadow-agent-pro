@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🛡️ Shadow Agent Pro
+<img src="https://raw.githubusercontent.com/JAY-glit/shadow-agent-pro/main/sap-banner.svg" width="100%">
 
-**Real-time malicious URL detection system — Chrome extension + ML backend + live dashboard**
+<br>
 
 ![Python](https://img.shields.io/badge/Python-3.14-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-REST_API-000000?style=flat-square&logo=flask&logoColor=white)
@@ -31,21 +31,9 @@ Built as a B.Tech Computer Science (AI) capstone project by **Jay Durga**
 
 ## Architecture
 
-```
-┌─────────────────────┐      ┌──────────────────────┐      ┌─────────────────────┐
-│   Chrome Extension   │─────▶│      Flask API        │─────▶│   React Dashboard    │
-│   (Manifest V3)      │      │   (ML inference +      │◀─────│   (Vite, live view)  │
-│   Persistent worker  │◀─────│    business logic)     │      │   WebSocket client   │
-└─────────────────────┘      └──────────────────────┘      └─────────────────────┘
-                                        │
-                        ┌───────────────┼────────────────┐
-                        ▼               ▼                ▼
-                 ┌────────────┐  ┌────────────┐   ┌──────────────┐
-                 │   Redis     │  │   Celery    │   │  Model Drift  │
-                 │  (cache +   │  │ (async deep │   │   Monitor     │
-                 │  fallback)  │  │    scan)    │   │               │
-                 └────────────┘  └────────────┘   └──────────────┘
-```
+<div align="center">
+<img src="https://raw.githubusercontent.com/JAY-glit/shadow-agent-pro/main/sap-architecture.svg" width="100%">
+</div>
 
 <br>
 
